@@ -67,9 +67,17 @@ Preserve personality and memorable language when it helps future rereading. Do n
 
 ## Write the entry
 
-Create:
+Create or reconcile:
 
 `daily/YYYY/MM/YYYY-MM-DD.md`
+
+The normal scheduled run is an end-of-day same-date closeout. Its job is to make the target-date file reflect the best reconstruction of that calendar day through the automation run time.
+
+If the target-date file does not exist, create it.
+
+If the target-date file already exists, do not treat that as a conflict. Read it, then replace or revise it as needed so it becomes the complete target-date entry through the current run time. The existing file may have been created by an earlier manual run or partial same-day run and must not block the scheduled closeout.
+
+Do not modify any file for a date earlier than `target_date` during a normal daily run.
 
 Use a lively but accurate narrative style. The log should be enjoyable to reread years later.
 
@@ -90,13 +98,13 @@ Do not force empty sections.
 
 ## Historical behavior
 
-- During a normal automated run, create only the target day's file.
+- During a normal automated run, create or reconcile only the target day's file.
 - Do not rewrite previous daily logs to incorporate hindsight.
-- If the target-date file already exists, do not blindly overwrite it or create a duplicate. Inspect it and report the conflict unless the current run was explicitly instructed to revise that existing entry.
+- An existing target-date file is expected and may be updated to produce the complete same-day closeout.
 - Higher-level reconciliation belongs in weekly/monthly/yearly summaries.
 
 ## Final response
 
 Keep the automation chat lightweight.
 
-After the repository write succeeds, respond with only a concise confirmation containing the target date and repository path created.
+After the repository write succeeds, respond with only a concise confirmation containing the target date and repository path written.
