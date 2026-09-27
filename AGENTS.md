@@ -30,6 +30,17 @@ Create files at:
 
 Do not reorganize these paths casually. Treat the directory convention as stable infrastructure.
 
+## Prompt routing
+
+Before creating, revising, repairing, or evaluating a Life Log artifact, read the current prompt for that operation and follow it together with this file.
+
+- Daily log work -> `prompts/daily-log.md`
+- Weekly summary work -> `prompts/weekly-log.md`
+- Monthly summary work -> `prompts/monthly-log.md`
+- Yearly summary work -> `prompts/yearly-log.md`
+
+For daily-log work, this routing is mandatory even in a fresh chat or manual run. Do not rely on remembered instructions, the current conversation alone, or an existing daily file as a substitute for reading `prompts/daily-log.md`.
+
 ## Daily log rules
 
 Daily entries should capture meaningful developments, not exhaustive transcripts.
