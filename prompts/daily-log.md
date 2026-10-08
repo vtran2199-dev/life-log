@@ -34,13 +34,11 @@ Cross-chat/recent-conversation retrieval is a REQUIRED part of the daily closeou
 
 Use whatever cross-chat or personal-context retrieval capability is available at run time. If a dedicated retrieval tool is available, call it before drafting rather than relying only on the current conversation, the nearest few chats, memory, or the existing daily file.
 
-Perform reconstruction in at least two passes:
+Perform all of these retrieval passes for `target_date` in `America/Chicago`. The targeted passes supplement, and do not replace, the broad retrieval pass.
 
 ### Pass 1 — broad day retrieval
 
-Retrieve a broad recap of activity on `target_date` in `America/Chicago` across conversations, projects, and relevant connected context.
-
-Look for the day's meaningful storylines, including where applicable:
+Retrieve a broad recap of activity across conversations, projects, and relevant connected context. Look for the day's meaningful storylines, including where applicable:
 
 - work completed, shipped, debugged, or materially advanced
 - job search, applications, interviews, offers, or career decisions
@@ -55,22 +53,66 @@ Look for the day's meaningful storylines, including where applicable:
 
 Do not limit retrieval to the current project or to the most recent few conversations if other same-day chats are available.
 
-### Pass 2 — gap check
+### Pass 2 — career activity
 
-Before drafting, perform a second retrieval/check specifically for major things that the first pass may have missed.
+Run a separate, date-specific retrieval for target-date career activity. Check for:
 
-Compare the candidate storylines against:
+- completed interviews and recruiter conversations
+- interview preparation and scheduled interviews
+- offers, rejections, feedback, and advancement
+- applications and major job-search developments
+
+Distinguish completed events from preparation, scheduling, possibilities, and future plans.
+
+### Pass 3 — projects and coding
+
+Run a separate, date-specific retrieval for target-date project and coding activity. Check for:
+
+- code written or shipped
+- GitHub commits and deployments
+- bugs, debugging, blockers, and technical discoveries
+- major accomplishments and project decisions
+
+Distinguish work completed or published from work discussed or planned.
+
+### Pass 4 — personal activity
+
+Run a separate, date-specific retrieval for target-date personal activity. Check for:
+
+- memorable experiences and milestones
+- interesting conversations and discoveries
+- frustrations, entertainment, humor, and unusual events
+
+Keep relevant personal moments even when they are not work-related.
+
+### Pass 5 — gap check
+
+Before drafting, perform a final retrieval/check specifically for major things that may have been missed.
+
+Compare candidate storylines against:
 
 - the existing target-date file, if any
 - the previous day's file
 - same-day recent-conversation context
+- the broad and targeted retrieval results
 - any strong direct statements about totals, accomplishments, failures, or memorable events
 
-Ask internally: "If Victor rereads this years later, what major part of today would he immediately notice is missing?"
+Ask internally: "If Victor rereads this years later, what major part of today would he immediately notice is missing?" If a major same-day storyline appears in conversation history but is absent from the candidate events, investigate it before writing.
 
-If a major same-day storyline appears in conversation history but is absent from the draft plan, investigate it before writing.
+The goal is high recall for meaningful events without inventing chronology. If retrieval is incomplete or unavailable, acknowledge that limitation in the completion response rather than claiming comprehensive coverage.
 
-The goal is not maximum length. The goal is high recall for meaningful events without inventing chronology.
+## Build a temporary event inventory
+
+Before drafting, construct a temporary list of meaningful events discovered across retrieval. Do not save this inventory as a repository file or create a database or tracking system.
+
+For each event, record:
+
+- what happened
+- when it happened, using the best available date/time evidence
+- whether it was completed, merely discussed, or planned for the future
+- the evidence supporting it, such as a timestamp, direct statement, or repository activity
+
+Use this inventory to guide the entry. Resolve uncertain timing or outcomes with focused retrieval when possible; do not turn plans or possibilities into completed events.
 
 ## Temporal classification
 
@@ -81,9 +123,7 @@ For each candidate event, distinguish among:
 - plan or intention for a future date
 - uncertain timing
 
-Only the first category belongs as a normal event in the daily log.
-
-Older facts may be used briefly as context when they explain why a target-date event mattered.
+Only events that happened on the target date belong as normal events in the daily log. Older facts may be used briefly as context when they explain why a target-date event mattered.
 
 Direct user statements such as "today I did X" made on the target date are strong chronology evidence unless contradicted by more precise timestamps or other reliable context.
 
@@ -91,39 +131,34 @@ If timing is uncertain, omit the event or mark it explicitly as uncertain. Never
 
 ## Tell the story, not the transcript
 
-The goal is not to summarize every conversation. Reconstruct the meaningful arc of the day.
+The goal is not to summarize every conversation. Reconstruct the meaningful arc of the day and synthesize chats that are parts of one evolving storyline.
 
-Prioritize:
+Use this explicit importance order:
 
-- major work completed or shipped
-- career developments
-- projects materially advanced
-- important decisions and reversals
-- discoveries or mental-model changes
-- friction, failures, blockers, and debugging that materially shaped the day
-- meaningful scale or throughput milestones
-- funny, absurd, surprising, or emotionally salient moments
-- important open loops created by the day
+1. Major real-world developments: interviews, offers, rejections, significant personal milestones, and major decisions.
+2. Meaningful work: coding accomplishments, projects shipped, technical breakthroughs, failures, and blockers.
+3. Learning, discoveries, frustrations, and interesting experiences.
+4. Funny moments, entertainment, and memorable casual conversations.
 
-When several chats are parts of one evolving storyline, synthesize them into that storyline rather than giving each chat equal weight.
+This order guides emphasis; it does not eliminate lower-priority events. Preserve personality and humor. The purpose is to prevent an extended casual conversation from overshadowing a short but significant real-world event.
 
-Preserve personality and memorable language when it helps future rereading. Do not turn the entry into a corporate status report.
-
-Do not allow technical work to crowd out the rest of the day. If meaningful personal, entertainment, gaming, social, or other non-work moments occurred, preserve them too.
+Also capture meaningful scale or throughput milestones and important open loops created by the day. Preserve memorable language when useful. Do not turn the entry into a corporate status report, and do not let technical work crowd out meaningful personal, entertainment, gaming, social, or other non-work moments.
 
 ## Draft completeness check
 
-Before writing to GitHub, review the planned entry and verify:
+Before writing to GitHub, compare the draft against the temporary event inventory and verify:
 
-- it reflects the actual target calendar day rather than mostly carrying forward the prior day's work
-- the day's largest accomplishments or milestones are present
-- major failures/blockers are present when they materially shaped the day
-- important numerical totals or scale changes are included when supported
+- every confirmed completed interview is represented
+- major offers, rejections, feedback, advancement, and other career outcomes are included
+- important project accomplishments, decisions, and setbacks are covered
+- significant personal milestones are preserved
+- no earlier-day event is incorrectly presented as a target-date event
+- no scheduled, possible, or future event is falsely described as completed
+- the day's largest accomplishments or milestones and supported numerical totals or scale changes are present
 - meaningful personal or memorable moments are represented when they occurred
-- the entry has enough context to be understandable years later
-- it reads as Victor's day, not merely as a project changelog
+- the entry has enough context to be understandable years later and reads as Victor's day, not merely as a project changelog
 
-If the result looks suspiciously thin compared with the amount of same-day conversation activity, do another retrieval pass before writing.
+If a major event's outcome is unclear, perform focused retrieval for that event rather than guessing. If the result looks suspiciously thin compared with the same-day activity, do another retrieval pass before writing.
 
 ## Write the entry
 
@@ -139,9 +174,7 @@ If the target-date file already exists, do not treat that as a conflict. Read it
 
 Do not modify any file for a date earlier than `target_date` during a normal daily run.
 
-Use a lively but accurate narrative style. The log should be enjoyable to reread years later.
-
-Use whichever sections fit the day, such as:
+Use a lively but accurate narrative style. The log should be enjoyable to reread years later. Use whichever sections fit the day, such as:
 
 - The Day in One Sentence
 - What Happened
@@ -163,8 +196,16 @@ Do not force empty sections.
 - An existing target-date file is expected and may be updated to produce the complete same-day closeout.
 - Higher-level reconciliation belongs in weekly/monthly/yearly summaries.
 
+## Verify GitHub publication
+
+After writing, verify all of the following before reporting success:
+
+- the correct target-date file was updated
+- the GitHub write succeeded
+- the updated content is present in the remote repository, by fetching or otherwise confirming the remote file after the write
+
+Do not claim success before confirming remote publication. If publication cannot be verified, state that plainly.
+
 ## Final response
 
-Keep the automation chat lightweight.
-
-After the repository write succeeds, respond with only a concise confirmation containing the target date and repository path written.
+Keep the automation chat lightweight. After verified publication, respond with only a concise confirmation containing the target date, repository path written, and publication verification status. If retrieval was incomplete or unavailable, briefly acknowledge that limitation.
