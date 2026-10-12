@@ -196,16 +196,39 @@ Do not force empty sections.
 - An existing target-date file is expected and may be updated to produce the complete same-day closeout.
 - Higher-level reconciliation belongs in weekly/monthly/yearly summaries.
 
-## Verify GitHub publication
+## Publish and verify the completed entry
 
-After writing, verify all of the following before reporting success:
+Complete all required cross-chat retrieval passes, the event inventory, chronology checks, and the draft completeness check before publishing. Then generate the complete finished Markdown entry and attempt to commit it to GitHub at the intended target-date path.
 
-- the correct target-date file was updated
-- the GitHub write succeeded
-- the updated content is present in the remote repository, by fetching or otherwise confirming the remote file after the write
+After the write attempt, fetch the target file from the remote repository and compare its content with the completed entry. A successful write response alone is not verification. Report normal success only after the remote file is fetched and its content is confirmed.
 
-Do not claim success before confirming remote publication. If publication cannot be verified, state that plainly.
+If the remote file matches the completed entry, use the existing concise success response: include the target date, repository path written, and that publication was verified. If retrieval was incomplete or unavailable, briefly acknowledge that limitation.
 
-## Final response
+### Mandatory recovery when publication fails
 
-Keep the automation chat lightweight. After verified publication, respond with only a concise confirmation containing the target date, repository path written, and publication verification status. If retrieval was incomplete or unavailable, briefly acknowledge that limitation.
+If the write fails, the remote fetch fails, or the fetched remote content does not match the completed entry, the final response MUST preserve the entire finished Markdown entry. Never return only a short failure message, and do not truncate, summarize, regenerate, or silently discard the completed draft.
+
+The failure response must include:
+
+- the target date
+- the intended repository path
+- the exact publication error, when available; otherwise say that no exact error was returned
+- a clear statement that GitHub publication was not verified
+- the complete finished Markdown entry, preferably inside a fenced `markdown` code block
+- a note that the preserved draft can be reused for a manual retry
+
+Keep the draft exactly as completed. The final response is the minimum recovery mechanism for the failed run. Do not claim that temporary execution files, hidden reasoning, working context, an unpublished commit, or any other unverified location preserves the draft or will remain available later. Do not claim the draft is saved or accessible unless that location has actually been checked.
+
+### Retry a failed publication
+
+When the user later asks to retry a failed daily-log publication:
+
+1. First check the scheduled conversation and any other verified durable location for the complete original draft.
+2. If the complete original draft is available, reuse that exact content. Do not repeat cross-chat reconstruction unnecessarily and do not rewrite or regenerate the draft.
+3. Before writing, check whether the target repository file already exists on the default branch. If it exists, fetch and inspect it before deciding how to update it; do not overwrite it blindly. If it does not exist, create it at the intended path.
+4. Commit the preserved content to the intended path on the existing default branch.
+5. Fetch the remote file afterward and compare it with the preserved draft. Report success only when the remote content is verified.
+6. If publication fails again, return the full preserved draft and the failure details as specified above.
+7. If the complete original draft cannot be found, explicitly tell the user it is not accessible before starting any reconstruction. Never imply that a missing draft was preserved or available. Reconstruct only after disclosing this, and follow the normal retrieval, chronology, and completeness requirements.
+
+The final response and later conversation history may not be guaranteed to remain accessible by the platform. Treat a draft as available for retry only when it can actually be retrieved and checked.
