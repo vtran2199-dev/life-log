@@ -162,9 +162,11 @@ If a major event's outcome is unclear, perform focused retrieval for that event 
 
 ## Write the entry
 
-Create or reconcile:
+Prepare the complete finished Markdown content for:
 
 `daily/YYYY/MM/YYYY-MM-DD.md`
+
+Generate the complete finished entry once, after all retrieval, chronology, and completeness checks. Preserve that exact content as the single source for both the downloadable attachment and the GitHub publication.
 
 The normal scheduled run is an end-of-day same-date closeout. Its job is to make the target-date file reflect the best reconstruction of that calendar day through the automation run time.
 
@@ -198,15 +200,17 @@ Do not force empty sections.
 
 ## Publish and verify the completed entry
 
-Complete all required cross-chat retrieval passes, the event inventory, chronology checks, and the draft completeness check before publishing. Then generate the complete finished Markdown entry and attempt to commit it to GitHub at the intended target-date path.
+After completing all required cross-chat retrieval passes, the event inventory, chronology checks, and draft completeness check, generate the complete finished Markdown entry once. Before any GitHub publication attempt, create a real downloadable file named `YYYY-MM-DD.md` containing that exact entry and attach it to the scheduled conversation as a downloadable link. Do not claim the attachment exists unless it was created and its download link is available. If attachment creation fails, continue with GitHub publication using the already-finished content. Then attempt to publish that same content to GitHub at the intended target-date path.
 
 After the write attempt, fetch the target file from the remote repository and compare its content with the completed entry. A successful write response alone is not verification. Report normal success only after the remote file is fetched and its content is confirmed.
 
-If the remote file matches the completed entry, use the existing concise success response: include the target date, repository path written, and that publication was verified. If retrieval was incomplete or unavailable, briefly acknowledge that limitation.
+If the remote file matches the completed entry, use the existing concise success response: include the target date, repository path written, and that publication was verified. Keep the downloadable attachment available and include its link when it was successfully created. If retrieval was incomplete or unavailable, briefly acknowledge that limitation.
 
 ### Mandatory recovery when publication fails
 
 If the write fails, the remote fetch fails, or the fetched remote content does not match the completed entry, the final response MUST preserve the entire finished Markdown entry. Never return only a short failure message, and do not truncate, summarize, regenerate, or silently discard the completed draft.
+
+Keep the downloadable attachment available when it was successfully created, clearly state that GitHub publication failed or was not verified, and tell the user the attached file can be manually uploaded to GitHub. Do not reconstruct, rewrite, or regenerate the completed entry. If attachment creation also failed, the response must still include the complete finished Markdown text below.
 
 The failure response must include:
 
