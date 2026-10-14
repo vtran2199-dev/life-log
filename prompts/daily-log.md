@@ -206,6 +206,23 @@ After the write attempt, fetch the target file from the remote repository and co
 
 If the remote file matches the completed entry, use the existing concise success response: include the target date, repository path written, and that publication was verified. Keep the downloadable attachment available and include its link when it was successfully created. If retrieval was incomplete or unavailable, briefly acknowledge that limitation.
 
+### Daily completion response
+
+Every completed daily-log run must end with a brief highlight reel in this format:
+
+**Daily Life Log — <Month Day, Year>**
+
+- Include 3–5 bullet points maximum, each one concise sentence that jogs the user's memory about a meaningful event from the target date.
+- Choose highlights by importance across career, coding, personal experiences, discoveries, frustrations, and funny moments; include a memorable or funny moment when one genuinely stands out.
+- Use only events that happened on the target date; do not describe future plans as completed events.
+- Derive the highlights from the already-finished daily entry. Do not repeat research or regenerate the journal.
+
+**Markdown:** [YYYY-MM-DD.md](downloadable attachment link), only if the attachment was successfully created.
+
+**GitHub:** Published and verified / Publication failed (manual upload needed), using the actual result. On failure, include the intended repository path and exact error when available. If attachment creation also failed, include the complete Markdown entry only as required by the emergency fallback above.
+
+Keep this response concise. When the attachment exists, never paste the complete journal into the response.
+
 ### Mandatory recovery when publication fails
 
 If the write fails, the remote fetch fails, or the fetched remote content does not match the completed entry, clearly report that GitHub publication was not verified. If the downloadable attachment was successfully created, keep it available and return only a brief failure report with its download link; do not paste the journal into the chat. If attachment creation also failed, include the complete finished Markdown entry in the response as the emergency fallback. Never truncate, summarize, regenerate, or silently discard the completed draft.
