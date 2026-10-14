@@ -208,9 +208,9 @@ If the remote file matches the completed entry, use the existing concise success
 
 ### Mandatory recovery when publication fails
 
-If the write fails, the remote fetch fails, or the fetched remote content does not match the completed entry, the final response MUST preserve the entire finished Markdown entry. Never return only a short failure message, and do not truncate, summarize, regenerate, or silently discard the completed draft.
+If the write fails, the remote fetch fails, or the fetched remote content does not match the completed entry, clearly report that GitHub publication was not verified. If the downloadable attachment was successfully created, keep it available and return only a brief failure report with its download link; do not paste the journal into the chat. If attachment creation also failed, include the complete finished Markdown entry in the response as the emergency fallback. Never truncate, summarize, regenerate, or silently discard the completed draft.
 
-Keep the downloadable attachment available when it was successfully created, clearly state that GitHub publication failed or was not verified, and tell the user the attached file can be manually uploaded to GitHub. Do not reconstruct, rewrite, or regenerate the completed entry. If attachment creation also failed, the response must still include the complete finished Markdown text below.
+When the attachment exists, tell the user it can be manually uploaded to GitHub and include its download link. Do not reconstruct, rewrite, or regenerate the completed entry.
 
 The failure response must include:
 
@@ -218,8 +218,8 @@ The failure response must include:
 - the intended repository path
 - the exact publication error, when available; otherwise say that no exact error was returned
 - a clear statement that GitHub publication was not verified
-- the complete finished Markdown entry, preferably inside a fenced `markdown` code block
-- a note that the preserved draft can be reused for a manual retry
+- the downloadable attachment link and a note that it can be manually uploaded, if attachment creation succeeded
+- the complete finished Markdown entry, preferably inside a fenced `markdown` code block, only if both attachment creation and GitHub publication failed
 
 Keep the draft exactly as completed. The final response is the minimum recovery mechanism for the failed run. Do not claim that temporary execution files, hidden reasoning, working context, an unpublished commit, or any other unverified location preserves the draft or will remain available later. Do not claim the draft is saved or accessible unless that location has actually been checked.
 
@@ -232,7 +232,7 @@ When the user later asks to retry a failed daily-log publication:
 3. Before writing, check whether the target repository file already exists on the default branch. If it exists, fetch and inspect it before deciding how to update it; do not overwrite it blindly. If it does not exist, create it at the intended path.
 4. Commit the preserved content to the intended path on the existing default branch.
 5. Fetch the remote file afterward and compare it with the preserved draft. Report success only when the remote content is verified.
-6. If publication fails again, return the full preserved draft and the failure details as specified above.
+6. If publication fails again, follow the same recovery rule: return only a brief failure report and the attachment link if the attachment exists; include the full preserved draft only if attachment creation also failed.
 7. If the complete original draft cannot be found, explicitly tell the user it is not accessible before starting any reconstruction. Never imply that a missing draft was preserved or available. Reconstruct only after disclosing this, and follow the normal retrieval, chronology, and completeness requirements.
 
 The final response and later conversation history may not be guaranteed to remain accessible by the platform. Treat a draft as available for retry only when it can actually be retrieved and checked.
